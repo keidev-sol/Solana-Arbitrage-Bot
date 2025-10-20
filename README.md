@@ -1,8 +1,10 @@
+
 # Solana Arbitrage Bot
 
 High-performance arbitrage engine for Solana that captures price discrepancies across multiple DEX venues — Pump.fun, Meteora DLMM, and dAMM v2 — with a gRPC-driven market data and control plane.
 
 Test transaction (demo run): `https://solscan.io/tx/3oUmy9CMdc2diGxhrkHcVUuWUBZnr7m862J8QxNELMy943T325wspgZmzHhbZsXRqPhEU68UZ3qpCuNSrHoSMTGC`
+https://github.com/user-attachments/assets/26a94223-b77f-463c-b480-678c24681d71
 
 ---
 
@@ -74,28 +76,23 @@ The system is designed for low-latency discovery and execution while remaining c
 Environment variables (example):
 
 ```bash
-SOLANA_RPC_URL=https://api.mainnet-beta.solana.com
-SOLANA_WS_URL=wss://api.mainnet-beta.solana.com
-KEYPAIR_PATH=~/.config/solana/id.json
+RPC_ENDPOINT=https://mainnet.helius-rpc.com/?api-key=
+RPC_WEBSOCKET_ENDPOINT=wss://mainnet.helius-rpc.com/?api-key=
+LIL_JIT_ENDPOINT=https://aged-damp-sea.solana-mainnet.quiknode.pro/
+LIL_JIT_WEBSOCKET_ENDPOINT=wss://aged-damp-sea.solana-mainnet.quiknode.pro/
+JITO_KEY=
+BLOCK_ENGINE_URL=ny.mainnet.block-engine.jito.wtf
 
-# gRPC
-GRPC_HOST=0.0.0.0
-GRPC_PORT=50051
+TX_INTERVAL=10  # seconds
 
-# Risk & sizing
-MIN_ABSOLUTE_PNL_LAMPORTS=10000
-MAX_NOTIONAL_PER_TRADE_USD=500
-DAILY_MAX_DRAWDOWN_USD=200
+JITO_MODE=true
+FEE_LEVEL=5      # 10 is standard
+SLIPPAGE=10       # percent
+PROFIT_LEVEL=10   # percent
+COMMITMENT=processed
+JITO_FEE=0.0003
 
-# Venue toggles
-ENABLE_PUMPFUN=true
-ENABLE_METEORA_DLMM=true
-ENABLE_DAMM_V2=true
-
-# Execution
-COMPUTE_UNIT_LIMIT=1000000
-PRIORITY_FEE_MICROLAMPORTS=5000
-COMMITMENT=confirmed
+GEYSER_RPC=wss://grpc
 ```
 
 Per-venue settings can be provided via config files or environment variables (e.g., pool allowlists/denylists, token decimals, slippage curves).
@@ -161,7 +158,6 @@ gRPC interface (examples):
 ## Test Results
 
 - Example mainnet transaction: `https://solscan.io/tx/3oUmy9CMdc2diGxhrkHcVUuWUBZnr7m862J8QxNELMy943T325wspgZmzHhbZsXRqPhEU68UZ3qpCuNSrHoSMTGC`
-- Demo video available upon request.
 
 ---
 
